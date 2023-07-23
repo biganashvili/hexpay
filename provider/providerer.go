@@ -1,9 +1,9 @@
-# hexpay
-A simple example of how to create->sign->broadcast a TRC20 token
+package provider
 
+import (
+	"github.com/shopspring/decimal"
+)
 
-## Implemented Functionality
-```
 type Providerer interface {
 	GenerateWallet() (Wallet, error)
 	GetTRXBalance(string) (decimal.Decimal, error)
@@ -11,4 +11,8 @@ type Providerer interface {
 	GetTRC20Balance(string) (decimal.Decimal, error)
 	SendTRC20(Wallet, string, decimal.Decimal) (string, error)
 }
-```
+
+type Wallet struct {
+	PrivKey string
+	Address string
+}
